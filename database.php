@@ -1,14 +1,13 @@
 
 <?php
-    $db_server = "mysql-3a1ea88d-tejat7927-2604.b.aivencloud.com";
-    $db_user = "avnadmin";
-    $db_pass = "AVNS__N9ORxGkKT8wybBBTgz";
-    $db_name = "defaultdb";
-    $port = "27293";
-    $conn = "";     // Connection Variable
+    $hostname = getenv('DB_HOST') ?: ''; 
+    $username = getenv('DB_USER') ?: '';
+    $password = getenv('DB_PASS') ?: '';
+    $database = getenv('DB_NAME') ?: 'defaultdb';
+    $port     = getenv('DB_PORT') ?: '27293';
 
     try {
-        $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name, $port);
+        $conn = mysqli_connect($hostname, $username, $password, $database, $port);
 
         // To handle special characters correctly
         mysqli_set_charset($conn, "utf8mb4");
