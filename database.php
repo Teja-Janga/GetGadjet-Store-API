@@ -14,5 +14,5 @@
     }
     catch(mysqli_sql_exception) {
         die("Could not Connect. Please try again later!");
-    }
+    } 
 ?> 
