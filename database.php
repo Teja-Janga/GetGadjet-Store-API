@@ -3,7 +3,6 @@
     header("Access-Control-Allow-Origin: https://get-gadjet-store-react.vercel.app");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
     header("Access-Control-Allow-Headers: Content-Type, Authorization");
-    header("Access-Control-Allow-Credentials: true");
 
     // Handle Preflight (OPTIONS) requests immediately
     if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -17,13 +16,16 @@
     $database = getenv('DB_NAME') ?: 'defaultdb';
     $port     = getenv('DB_PORT') ?: '27293';
 
-    try {
-        $conn = mysqli_connect($hostname, $username, $password, $database, $port);
+    $conn = mysqli_connect($hostname, $username, $password, $database, $port);
 
-        // To handle special characters correctly
-        mysqli_set_charset($conn, "utf8mb4");
+    if (!$conn) {
+        // If it fails, we STILL need to send JSON so React doesn't crash
+        header('Content-Type: application/json');
+        die(json_encode(["error" => "Database connection failed: " . mysqli_connect_error()]));
     }
-    catch(mysqli_sql_exception) {
-        die("Could not Connect. Please try again later!");
-    } 
+        
+        // To handle special characters correctly
+    mysqli_set_charset($conn, "utf8mb4");
+    
+     
 ?> 
