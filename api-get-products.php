@@ -1,7 +1,6 @@
 <?php
     // Allow React (localhost:5173) to access this data
-    header("Access-Control-Allow-Origin: *"); 
-    header("Content-Type: application/json");
+
     require 'database.php';
     // api_products.php
 

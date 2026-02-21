@@ -1,7 +1,6 @@
 
 <?php
-    header("Access-Control-Allow-Origin: *");
-    header("Content-Type: application/json");
+
     require 'database.php';
 
     if ($conn->connect_error) {

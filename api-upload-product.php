@@ -7,8 +7,7 @@ In line.no: 17 why we use "time()_" for filename:
 -->
 
 <?php
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: Content-Type");
+
     require 'database.php';
 
     if($_FILES['image']) {
