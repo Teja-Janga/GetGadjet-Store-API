@@ -1,6 +1,4 @@
-
 <?php
-
     require 'database.php';
 
     if ($conn->connect_error) {
@@ -9,14 +7,6 @@
     }
 
     try {
-        // $sql = "SELECT * FROM orders ORDER BY ID DESC";
-        // $sql = "SELECT 
-        //             o.*, SUM(oi.Quantity * oi.Price) AS Total_Amount 
-        //         FROM orders o
-        //         LEFT JOIN order_items oi ON o.ID = oi.Order_id
-        //         GROUP BY o.ID
-        //         ORDER BY o.ID DESC";
-
         $sql = "SELECT 
                     o.*, 
                     COALESCE(SUM(oi.Quantity * oi.Price), 0) AS Total_Amount 

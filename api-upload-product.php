@@ -1,15 +1,5 @@
-<!--
-In line.no: 17 why we use "time()_" for filename:
-    Imagine I upload "iphone.jpg" today, and then next month you upload
-    a different "iphone.jpg". Without time(), the new image would
-    overwrite the old one! By adding the timestamp, the files stay
-    unique (e.g., 17154321_iphone.jpg). 
--->
-
 <?php
-
     require 'database.php';
-
     if($_FILES['image']) {
         $targetDir = "../images/";
 
@@ -41,3 +31,11 @@ In line.no: 17 why we use "time()_" for filename:
         }
     }
 ?>
+
+<!--
+In line.no: 17 why we use "time()_" for filename:
+    Imagine I upload "iphone.jpg" today, and then next month you upload
+    a different "iphone.jpg". Without time(), the new image would
+    overwrite the old one! By adding the timestamp, the files stay
+    unique (e.g., 17154321_iphone.jpg). 
+-->
